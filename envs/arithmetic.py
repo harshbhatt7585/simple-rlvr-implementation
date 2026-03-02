@@ -24,7 +24,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from training_logging import EpisodeRewardLogger, MetricsJSONLCallback, configure_external_logs
+from training_logging import EpisodeRewardFunction, MetricsJSONLCallback, configure_external_logs
 
 LOGGER = logging.getLogger("rlvr")
 WANDB_PROJECT = "RLVR"
@@ -196,7 +196,7 @@ def main():
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    reward_fn = EpisodeRewardLogger(
+    reward_fn = EpisodeRewardFunction(
         output_dir / "episode_rewards.jsonl",
         terminal_log_every=args.terminal_log_every,
         sample_log_every=args.sample_log_every,

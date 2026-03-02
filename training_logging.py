@@ -258,7 +258,7 @@ class WeaveTraceLogger:
             pass
 
 
-class EpisodeRewardLogger:
+class EpisodeRewardFunction:
     """Custom reward function that logs every generated episode."""
 
     def __init__(
